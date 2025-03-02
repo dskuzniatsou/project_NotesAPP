@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Notes</title>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img class="logo-notes" src="./assets/📝Notes.svg" alt="logo Notes">
+    </div>
+    <div class="counter">
+      <img class="logo-notes" src="./assets/notes.svg" alt="logo notes">
+      Всего заметок: <span id="counter">5</span>
+    </div>
+  </header>
+  <section class="note-form">
+    <div class="input-menu">
+      <div class="title">
+      <label for="note-title">Название заметки</label>
+      <input type="text" id="note-title" placeholder="Напишите название новой заметки...">
+    </div>
+    <div class="description">
+      <div class="form-description">
+      <label for="note-description">Описание новой заметки</label>
+      <textarea id="note-description" placeholder="Напишите описание новой заметки..."></textarea>
+      <!-- Выбор цвета заметки -->
+    </div>
+    <div class="options">
+      <div class="color-picker">
+        <span>Выберите цвет заметки:</span>
+        <div class="colors">
+          <span class="color yellow"></span>
+          <span class="color green"></span>
+          <span class="color blue"></span>
+          <span class="color red"></span>
+          <span class="color purple"></span>
+        </div>
+      </div>
+      <button class="add-note" type="submit"><img src="./assets/plus-svgrepo-com 1.svg" class="add-note-img">Добавить
+        заметку</button>
+      </div>
+    </div>
+    </div>
+    <!-- Данный div должен удаляться при появлении заметок -->
+    <div class="main-content">
+      <p class="init-text">У вас нет еще ни одной заметки<br>
+       Заполните поля выше и создайте свою первую заметку!</p>
+    </div>
+  </section>
+  <!-- Фильтр избранных заметок -->
+  <!-- <section class="filter">
+        <input type="checkbox" id="favorites-filter">
+        <label for="favorites-filter">Показать только избранные заметки</label>
+    </section> -->
+
+ 
+</body>
+
+</html>
