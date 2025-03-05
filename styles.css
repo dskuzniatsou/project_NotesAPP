@@ -79,8 +79,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-   
+    width: 1280px;
+    height: 100%;
+   position: relative;
 }
 
 /* Заголовок */
@@ -108,12 +109,12 @@ padding-right: 64px;
 .counter img {
     height: 24px;
     margin-right: 5px;
+    color: #365fb8;
 }
 
 /* Форма добавления заметки */
-.note-form {
-    width: 1280px;
-height: 720px;
+.note-form, .content {
+
 background: #fafafc;
 }
 
@@ -179,6 +180,8 @@ color: #919191;
 }
 
 .colors {
+    width: 212px;
+    height: 36px;
     display: flex;
     gap: 20px;
     margin: 6px;
@@ -192,6 +195,14 @@ color: #919191;
     cursor: pointer;
     transition: transform 0.2s;
 }
+ /* .green {
+    width: 36px; 
+    height: 36px;
+    background-color: #6ed6f7; 
+    border: 4px solid #2366d1; 
+    border-radius: 50%; 
+    display: inline-block;
+  } */ 
 
 .color:hover {
     transform: scale(1.2);
@@ -234,8 +245,18 @@ color: #919191;
 
 /* Сообщение о пустых заметках */
 
+.filter-notes {
+    display:flex; /*none -->  Это свойство должно становиться flex при добавлении заметок*/
+    
+    align-items: center;
+    justify-content:right;
+ font-size: 12px;
+ margin: 0 64px 12px;
+}
+
 
 .init-text {
+    display: none;/*block -->  Это свойство должно становиться none при добавлении заметок*/
     font-weight: 500;
 font-size: 16px;
 line-height: 150%;
@@ -243,6 +264,79 @@ text-align: center;
 color: #000;
 margin-top: 138px;
 }
+
+.main-content {
+    margin: 0 64px;
+    
+  }
+  .notes-list {
+    display: flex;
+    flex-wrap: wrap;
+        gap: 24px;
+        padding: 0 64px;
+    list-style-type:  none;
+  }
+
+  li {
+    width: 368px; 
+    height: 216px; 
+    
+    box-shadow: 0px 4px 8px rgba(11.48, 11.69, 12.75, 0.08); 
+    border-radius: 10px; 
+    overflow: hidden; 
+    flex-direction: column; 
+    align-items: center; 
+    display: flex;
+  }
+
+  .added-title {
+display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 12px;
+    background: #F3DB7D; 
+  }
+  .added-title img{
+    width: 16px;
+    height: 16px;
+   
+  }
+  .img-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+  
+  .added-description {
+    padding: 12px;
+  }
+  
+  .alert{
+    display: none; /* свойство меняется на block при добавлении заметки*/
+    position: absolute; /* Размещаем кнопку поверх */
+  bottom: 72px; /* Центрируем по вертикали */
+  right: 64px ; /* Центрируем по горизонтали */
+    border-radius: 10px;
+padding: 12px 24px;
+color: #fff;
+height: 48px;
+box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
+background: #47b27d;
+display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+  }
+  /*свойство приобретается при добавлении заметки*/
+  .done {
+        background: #47b27d;
+  }
+  /*свойство приобретается при ошибке в заголовке заметки*/
+  .mistake {
+background:rgba(242, 61, 91, 1) ;
+  }
+ 
 
 /* Адаптивность */
 @media (max-width: 768px) {

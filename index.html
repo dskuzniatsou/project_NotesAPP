@@ -19,7 +19,7 @@
     </div>
     <div class="counter">
       <img class="logo-notes" src="./assets/notes.svg" alt="logo notes">
-      Всего заметок: <span id="counter">5</span>
+      <span>Всего заметок: <span id="counter">0</span></span>
     </div>
   </header>
   <section class="note-form">
@@ -48,21 +48,38 @@
       <button class="add-note" type="submit"><img src="./assets/plus-svgrepo-com 1.svg" class="add-note-img">Добавить
         заметку</button>
       </div>
+      
     </div>
+
     </div>
     <!-- Данный div должен удаляться при появлении заметок -->
+  <section class="content">
+    <div class="filter-notes">
+      <img src="./assets/checkbox inactive.svg" alt="checkbox">
+      <span>Показать только избранные заметки</span>
+    </div>
     <div class="main-content">
+      
       <p class="init-text">У вас нет еще ни одной заметки<br>
        Заполните поля выше и создайте свою первую заметку!</p>
     </div>
-  </section>
-  <!-- Фильтр избранных заметок -->
-  <!-- <section class="filter">
-        <input type="checkbox" id="favorites-filter">
-        <label for="favorites-filter">Показать только избранные заметки</label>
-    </section> -->
-
+    <ul class="notes-list">
+      <!-- Сюда будут рендерится заметки из JavaScript -->
+       <li><div class="added-title"><div>gaubvpn[</div><div class="img-menu"><img src="./assets/heart inactive.png" alt="heart inactive"><img src="./assets/trash.svg" alt="trash"></div></div><p class="added-description">Lorem ipsum dolor sit amet consectetur adipisic commodi quaerat officia. Beatae, tempore?</p></li>
+       <li><div class="added-title"><div>gaubvpn[</div><div class="img-menu"><img src="./assets/heart inactive.png" alt="heart inactive"><img src="./assets/trash.svg" alt="trash"></div></div><p class="added-description">Lorem ipsum dolor sit amet consectetur adipisic commodi quaerat officia. Beatae, tempore?</p></li>
+       <li><div class="added-title"><div>gaubvpn[</div><div class="img-menu"><img src="./assets/heart inactive.png" alt="heart inactive"><img src="./assets/trash.svg" alt="trash"></div></div><p class="added-description">Lorem ipsum dolor sit amet consectetur adipisic commodi quaerat officia. Beatae, tempore?</p></li>
+       <li><div class="added-title"><div>gaubvpn[</div><div class="img-menu"><img src="./assets/heart inactive.png" alt="heart inactive"><img src="./assets/trash.svg" alt="trash"></div></div><p class="added-description">Lorem ipsum dolor sit amet consectetur adipisic commodi quaerat officia. Beatae, tempore?</p></li>
+       <li><div class="added-title"><div>gaubvpn[</div><div class="img-menu"><img src="./assets/heart inactive.png" alt="heart inactive"><img src="./assets/trash.svg" alt="trash"></div></div><p class="added-description">Lorem Lorem ipsum dolor sit amet consectetur adipisicing. ipsum dolor sit amet consectetur adipisic commodi quaerat officia. Beatae, tempore?</p></li>
+       <li><div class="added-title"><div>gaubvpn[</div><div class="img-menu"><img src="./assets/heart inactive.png" alt="heart inactive"><img src="./assets/trash.svg" alt="trash"></div></div><p class="added-description">Lorem ipsum dolor sit amet consectetur adipisic commodi quaerat officia. Beata Lorem ipsum dolor sit amet consectetur adipisicing elit. e, tempore?</p></li>
+    </ul>
  
+    <div class="messages-box">
+      <button class="alert done" type="button">
+        <img src="./assets/Done.png" alt="img done">Заметка добавлена</button>
+    </div>
+  
+    </section> 
+    <script src="./script.js"></script>
 </body>
 
 </html>
