@@ -1,67 +1,4 @@
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background: #fff;
-}
-header {
-    width: 1280px;
-    height: 60px;
-    box-shadow: 0 1px 3px 0 rgba(11, 12, 13, 0.16), 0 0 1px 0 rgba(11, 12, 13, 0.24);
-    background: #fff;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 64px;
-    padding-right: 64px;
-}
-.counter {
-line-height: 150%;
-text-align: right;
-}
-.input-menu {
-border-radius: 4px;
-padding: 24px;
-margin: 24px 64px;
-width: 1152px;
-height: 228px;
-box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
-background: #fff;
-flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex;
-}
 
-.note-form label {
-    font-weight: 600;
-    margin: 10px 0 5px;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 200%;
-    color: #919191;
-    }
-#note-title {
-    border: 1px solid #e8e8e8;
-border-radius: 10px;
-padding: 6px 12px;
-width: 344px;
-height: 36px;
-font-weight: 400;
-font-size: 14px;
-line-height: 171%;
-color: #919191;
-
-}
-#note-description {
-    border: 1px solid #e8e8e8;
-border-radius: 10px;
-padding: 6px 12px;
-width: 848px;
-height: 84px;
-font-weight: 400;
-font-size: 14px;
-line-height: 171%;
-color: #919191;
-} */
 
 /* Подключение шрифта */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
@@ -71,9 +8,13 @@ color: #919191;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    overflow-wrap: break-word;
 }
-
-body {
+html {
+    display: flex;
+    justify-content: center;
+}
+ body {
     background-color: #f8f9fa;
     color: #333;
     display: flex;
@@ -146,6 +87,7 @@ flex-direction: row;
 .form-description {
     width: 848px;
 height: 108px;
+
 margin-right: 24px;
 }
 .options {
@@ -162,6 +104,7 @@ input,textarea {
 }
 
 textarea {
+    
     height: 84px;
     resize: none;
 padding: 6px 12px;
@@ -183,10 +126,26 @@ color: #919191;
     width: 212px;
     height: 36px;
     display: flex;
-    gap: 20px;
-    margin: 6px;
+    gap: 8px;
+    
 }
-
+.colors div{
+    display: flex;
+width: 36px;
+height: 36px;
+align-items: center;
+justify-content: center;
+}
+.selected {
+    border-radius: 50%;
+    border: 2px solid;
+    
+}
+.border_yellow {color: yellow;}
+.border_green {color: green;}
+.border_blue {color:  #457cdc;}
+.border_red {color: red;}
+.border_purple {color: purple;}
 .color {
     width: 24px;
     height: 24px;
@@ -231,8 +190,11 @@ color: #919191;
     background: #457cdc;
     border-radius: 10px;
     cursor: pointer;
-    transition: background 0.2s;
+    /* transition: background 0.2s; */
     gap: 8px;
+    cursor: pointer;
+        transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .add-note img {
@@ -256,7 +218,7 @@ color: #919191;
 
 
 .init-text {
-    display: none;/*block -->  Это свойство должно становиться none при добавлении заметок*/
+    
     font-weight: 500;
 font-size: 16px;
 line-height: 150%;
@@ -266,6 +228,7 @@ margin-top: 138px;
 }
 
 .main-content {
+    display: block;/*block -->  Это свойство должно становиться none при добавлении заметок*/
     margin: 0 64px;
     
   }
@@ -280,14 +243,16 @@ margin-top: 138px;
   li {
     width: 368px; 
     height: 216px; 
-    
-    box-shadow: 0px 4px 8px rgba(11.48, 11.69, 12.75, 0.08); 
+        box-shadow: 0px 4px 8px rgba(11.48, 11.69, 12.75, 0.08); 
     border-radius: 10px; 
+    
     overflow: hidden; 
     flex-direction: column; 
     align-items: center; 
     display: flex;
+    height: fit-content; 
   }
+ 
 
   .added-title {
 display: flex;
@@ -295,11 +260,12 @@ display: flex;
     align-items: center;
     width: 100%;
     padding: 12px;
-    background: #F3DB7D; 
+    /* background: #F3DB7D;  */
   }
   .added-title img{
     width: 16px;
     height: 16px;
+    cursor: pointer;
    
   }
   .img-menu {
@@ -309,20 +275,22 @@ display: flex;
   }
   
   .added-description {
+    height: fit-content;
+    overflow: hidden;
     padding: 12px;
   }
-  
-  .alert{
-    display: none; /* свойство меняется на block при добавлении заметки*/
-    position: absolute; /* Размещаем кнопку поверх */
-  bottom: 72px; /* Центрируем по вертикали */
+ 
+  .messages-box{
+    display: block;  /*менять на none*/
+  position: absolute; /* Размещаем кнопку поверх */
+ bottom: 72px; /* Центрируем по вертикали */
   right: 64px ; /* Центрируем по горизонтали */
     border-radius: 10px;
 padding: 12px 24px;
 color: #fff;
 height: 48px;
 box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
-background: #47b27d;
+
 display: flex;
     align-items: center;
     justify-content: center;
@@ -330,10 +298,12 @@ display: flex;
   }
   /*свойство приобретается при добавлении заметки*/
   .done {
+    
         background: #47b27d;
   }
   /*свойство приобретается при ошибке в заголовке заметки*/
   .mistake {
+   
 background:rgba(242, 61, 91, 1) ;
   }
  

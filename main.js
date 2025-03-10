@@ -2,10 +2,9 @@
 // хранение данных, бизнес-логика
 const model = {
     notes: [],
-    addNote(title,description) {
+    addNote(title,description, color='yellow') {
     const isFavorite = false
     const id = Math.random() 
-    const color ='yellow'
 const newNotes = {id,title,description,color,isFavorite}
     this.notes.push(newNotes)
     view.renderNotes(model.notes)
@@ -19,22 +18,40 @@ const newNotes = {id,title,description,color,isFavorite}
  
 // отображение данных: рендер списка задач, размещение обработчиков событий
 const view = {
+     selectedColor: 'yellow',
     init() {
         this.renderNotes(model.notes)
         this.renderCountNotes()
         const colorsContainer = document.querySelector(".colors");
 
     colorsContainer.addEventListener("click", function (event) {
-        if (event.target.classList.contains("color")) {
-            // Удаляем выделение у всех цветов
-             document.querySelectorAll(".color").forEach(color => color.classList.remove("selected"));
+        const clickedColor = event.target.closest(".color"); // Проверяем, что клик был по цвету
+            if (clickedColor) {
+                // Убираем выделение у всех цветов
+                document.querySelectorAll(".color").forEach(color => color.classList.remove("selected"));
 
-            // Добавляем выделение кликнутому цвету
-            event.target.classList.add("selected");
+                // Добавляем выделение к новому цвету
+                clickedColor.classList.add("selected");
 
-            const color = event.target.classList[1];}})
-        
-    
+                // Получаем цвет из data-атрибута (или класса)
+                this.selectedColor = clickedColor.classList.contains("yellow") ? "yellow" :
+                                     clickedColor.classList.contains("green") ? "green" :
+                                     clickedColor.classList.contains("blue") ? "blue" :
+                                     clickedColor.classList.contains("red") ? "red" :
+                                     clickedColor.classList.contains("purple") ? "purple" :
+                                     "yellow";
+        // if (event.target.classList.contains("color")) {
+        //     // Удаляем выделение у всех цветов
+        //      document.querySelectorAll(".color").forEach(color => color.classList.remove("selected"));
+
+        //     // Добавляем выделение кликнутому цвету
+        //     event.target.classList.add("selected");
+          
+
+        //     this.selectedColor = event.target.classList[1];
+            
+            console.log("Выбранный цвет:", this.selectedColor);
+        }})
         const input = document.querySelector('#note-title') 
         const textarea = document.querySelector('#note-description')
         const button = document.querySelector('.add-note')
@@ -43,8 +60,8 @@ button.addEventListener('click', function (event) {
     event.preventDefault() // Предотвращаем стандартное поведение формы
     const title = input.value
     const description = textarea.value
-    
-    controller.addNote(title,description) // Вызываем метод addNote контроллера
+    console.log("Перед добавлением заметки, цвет:", this.selectedColor)
+    controller.addNote(title,description,this.selectedColor) // Вызываем метод addNote контроллера
 
     input.value = ''
     textarea.value ='' 
@@ -66,42 +83,45 @@ button.addEventListener('click', function (event) {
           this.renderCountNotes()
       }}
     })
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector(".notes-list").addEventListener("click", (event) => {
+            if (event.target.classList.contains("inactive")) {
+                event.target.src = "./assets/heart active.svg";
+                event.target.alt = "heart active";
+                event.target.classList.remove("inactive");
+                event.target.classList.add("active");
+            } else if (event.target.classList.contains("active")) {
+                event.target.src = "./assets/heart inactive.png";
+                event.target.alt = "heart inactive";
+                event.target.classList.remove("active");
+                event.target.classList.add("inactive");
+            }
+        });
+    })
+      document.querySelector(".filter-notes").addEventListener("click", (event) => {
+        if (event.target.classList.contains("checkbox-inactive")){
+            event.target.src = "./assets/checkbox active.svg";
+            event.target.alt = "checkbox-active"
+            event.target.classList.remove("checkbox-inactive");
+                event.target.classList.add("checkbox-active");
+            } else if (event.target.classList.contains("checkbox-active")) {
+                event.target.src = "./assets/checkbox inactive.svg";
+                event.target.alt = "checkbox inactive";
+                event.target.classList.remove("checkbox-active");
+                event.target.classList.add("checkbox-inactive");
+        }
+})
+    },
 
-      
-  // Получаем все изображения с классом 'inactive'
-const image = document.querySelector('.inactive')
-
-    image.addEventListener('click', (event) => {
-      // Проверяем, если элемент имеет класс 'inactive'
-      if (event.target.matches('.inactive')) {
-        // Заменяем изображение на активное
-        image.src = './assets/heart active.svg'; // Новое изображение
-        image.alt = 'heart active'; // Новый alt для изображения
-        image.classList.remove('inactive'); // Убираем класс 'inactive'
-        image.classList.add('active');}// Добавляем класс 'active'
-    //    else if (image.classList.contains('active')) {
-    //     // Если изображение уже активное, возвращаем его обратно
-    //     image.src = './assets/heart inactive.png'; // Вернуть исходное изображение
-    //     image.alt = 'heart inactive'; // Вернуть исходный alt
-    //     image.classList.remove('active'); // Убираем класс 'active'
-    //     image.classList.add('inactive'); // Возвращаем класс 'inactive'
-    //   }
-    });
-  ;
-  
-  
-},
-
-    renderNotes(notes){
+    renderNotes(notes) {
         const list=document.querySelector('.notes-list')
-       
+        
         let notesHTML=''
         for (let i = 0; i < notes.length; i++) {
             const note = notes[i]
             notesHTML+=`<li id="${note.id}"><div class="added-title ${note.color}"><div>${note.title}</div><div class="img-menu"><img class="inactive" src="./assets/heart inactive.png" alt="heart inactive"><img class="delete-note" src="./assets/trash.svg" alt="trash"></div></div><p class="added-description">${note.description}</p></p></li>`
     }
     list.innerHTML=notesHTML 
-    
     this.renderCountNotes()
 },
         renderCountNotes(){
@@ -109,12 +129,13 @@ const image = document.querySelector('.inactive')
             // const list=document.querySelector('.notes-list')
             counter.textContent=document.querySelectorAll(".notes-list li").length
         }
-} 
+ }
  // обработка действий пользователя, обновление модели
 const controller = {
-    addNote(title,description){
+    addNote(title,description,color){
+        console.log("Выбранный цвет:", color)
         if ((title.trim()!=='')&&(description.trim()!=='')){
-            model.addNote(title,description)
+            model.addNote(title,description, color)
         }
     },
     deleteNote(noteId){
