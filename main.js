@@ -18,50 +18,52 @@ const newNotes = {id,title,description,color,isFavorite}
  
 // отображение данных: рендер списка задач, размещение обработчиков событий
 const view = {
-     selectedColor: 'yellow',
+      selectedColor: 'yellow',
     init() {
         this.renderNotes(model.notes)
         this.renderCountNotes()
         const colorsContainer = document.querySelector(".colors");
 
-    colorsContainer.addEventListener("click", function (event) {
-        const clickedColor = event.target.closest(".color"); // Проверяем, что клик был по цвету
-            if (clickedColor) {
-                // Убираем выделение у всех цветов
-                document.querySelectorAll(".color").forEach(color => color.classList.remove("selected"));
+    colorsContainer.addEventListener("click",  event => {
+        // const clickedColor = event.target.closest(".color"); // Проверяем, что клик был по цвету
+        //     if (clickedColor) {
+        //         // Убираем выделение у всех цветов
+        //         document.querySelectorAll(".color").forEach(color => color.classList.remove("selected"));
 
-                // Добавляем выделение к новому цвету
-                clickedColor.classList.add("selected");
+        //         // Добавляем выделение к новому цвету
+        //         clickedColor.classList.add("selected");
 
-                // Получаем цвет из data-атрибута (или класса)
-                this.selectedColor = clickedColor.classList.contains("yellow") ? "yellow" :
-                                     clickedColor.classList.contains("green") ? "green" :
-                                     clickedColor.classList.contains("blue") ? "blue" :
-                                     clickedColor.classList.contains("red") ? "red" :
-                                     clickedColor.classList.contains("purple") ? "purple" :
-                                     "yellow";
-        // if (event.target.classList.contains("color")) {
-        //     // Удаляем выделение у всех цветов
-        //      document.querySelectorAll(".color").forEach(color => color.classList.remove("selected"));
+        //         // Получаем цвет из data-атрибута (или класса)
+        //         this.selectedColor = clickedColor.classList.contains("yellow") ? "yellow" :
+        //                              clickedColor.classList.contains("green") ? "green" :
+        //                              clickedColor.classList.contains("blue") ? "blue" :
+        //                              clickedColor.classList.contains("red") ? "red" :
+        //                              clickedColor.classList.contains("purple") ? "purple" :
+        //                              "yellow";
+        if (event.target.classList.contains("color")) {
+            // Удаляем выделение у всех цветов
+             document.querySelectorAll(".color").forEach(color => color.classList.remove("selected"));
 
-        //     // Добавляем выделение кликнутому цвету
-        //     event.target.classList.add("selected");
+            // Добавляем выделение кликнутому цвету
+            event.target.classList.add("selected");
           
 
-        //     this.selectedColor = event.target.classList[1];
+            this.selectedColor = event.target.classList[1];
             
             console.log("Выбранный цвет:", this.selectedColor);
         }})
+
         const input = document.querySelector('#note-title') 
         const textarea = document.querySelector('#note-description')
         const button = document.querySelector('.add-note')
 // Добавляем обработчик события на кнопку
-button.addEventListener('click', function (event) {
+button.addEventListener('click', event => {
     event.preventDefault() // Предотвращаем стандартное поведение формы
+    
     const title = input.value
     const description = textarea.value
-    console.log("Перед добавлением заметки, цвет:", this.selectedColor)
-    controller.addNote(title,description,this.selectedColor) // Вызываем метод addNote контроллера
+    console.log("Перед добавлением заметки, цвет:",view.selectedColor )
+    controller.addNote(title,description,view.selectedColor) // Вызываем метод addNote контроллера
 
     input.value = ''
     textarea.value ='' 
