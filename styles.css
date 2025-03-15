@@ -1,20 +1,44 @@
 
 
 /* Подключение шрифта */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap'); */
 
-* {
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./fonts/Montserrat/Montserrat-Regular.ttf') format('ttf');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./fonts/Montserrat/Montserrat-Medium.ttf') format('ttf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./fonts/Montserrat/Montserrat-Bold.ttf') format('ttf');
+    font-weight: bold;
+}
+
+
+
+*,
+*::before,
+*::after  {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    overflow-wrap: break-word;
+   
 }
 html {
     display: flex;
     justify-content: center;
 }
  body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    overflow-wrap: break-word;
     background-color: #f8f9fa;
     color: #333;
     display: flex;
@@ -22,7 +46,7 @@ html {
     align-items: center;
     width: 1280px;
     height: 100%;
-   position: relative;
+    position: relative;
 }
 
 /* Заголовок */
@@ -30,9 +54,9 @@ header {
     width: 1280px;
     height: 60px;
     box-shadow: 0 1px 3px 0 rgba(11, 12, 13, 0.16), 0 0 1px 0 rgba(11, 12, 13, 0.24);
-background: #fff;
-padding-left: 64px;
-padding-right: 64px;
+    background: #fff;
+    padding-left: 64px;
+    padding-right: 64px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,6 +67,8 @@ padding-right: 64px;
 .counter {
     display: flex;
     align-items: center;
+    font-size: 16px;
+    font-weight: 500;
 }
 #counter {
     font-weight: 700;
@@ -50,7 +76,6 @@ padding-right: 64px;
 .counter img {
     height: 24px;
     margin-right: 5px;
-    color: #365fb8;
 }
 
 /* Форма добавления заметки */
@@ -77,13 +102,14 @@ background: #fff;
 }
 label {
     font-size: 12px;
+    line-height: 200%;
     color: #919191;
 }
 .description {
 display: flex;
 flex-direction: row;
-
 }
+
 .form-description {
     width: 848px;
 height: 108px;
@@ -95,23 +121,24 @@ margin-right: 24px;
 height: 108px;
 }
 input,textarea {
+    
     width: 100%;
     border-radius: 10px;
+    padding: 6px 12px;
     border: 1px solid #E8E8E8;
-    font-size: 14px;
     color: #333;
     background-color: white;
-}
-
-textarea {
-    
-    height: 84px;
-    resize: none;
-padding: 6px 12px;
 }
 input {
     height: 36px;
 }
+textarea {
+    font-family: var(--font-family);
+    height: 84px;
+    resize: none;
+
+}
+
 /* Выбор цвета заметки */
 .color-picker {
     width: 212px;
@@ -141,11 +168,11 @@ justify-content: center;
     border: 2px solid;
     
 }
-.border_yellow {color: yellow;}
-.border_green {color: green;}
-.border_blue {color:  #457cdc;}
-.border_red {color: red;}
-.border_purple {color: purple;}
+._yellow {color: yellow;}
+._green {color: green;}
+._blue {color:  #457cdc;}
+._red {color: red;}
+._purple {color: purple;}
 .color {
     width: 24px;
     height: 24px;
@@ -177,6 +204,7 @@ justify-content: center;
 .add-note {
     border-radius: 10px;
     margin-top: 12px;
+    padding: 6px 24px ;
     width: 232px;
     height: 36px;
     display: flex;
@@ -188,8 +216,7 @@ justify-content: center;
     font-weight: 500;
     border: none;
     background: #457cdc;
-    border-radius: 10px;
-    cursor: pointer;
+       cursor: pointer;
     /* transition: background 0.2s; */
     gap: 8px;
     cursor: pointer;
@@ -208,18 +235,21 @@ justify-content: center;
 /* Сообщение о пустых заметках */
 
 .filter-notes {
-    display:flex; /*none -->  Это свойство должно становиться flex при добавлении заметок*/
-    
+    display:none; /*none -->  Это свойство должно становиться flex при добавлении заметок*/
     align-items: center;
+    gap: 8px;
     justify-content:right;
  font-size: 12px;
+ line-height: 200%;
  margin: 0 64px 12px;
 }
-
+.filter-notes img {
+    cursor: pointer;
+}
 
 .init-text {
     
-    font-weight: 500;
+font-weight: 500;
 font-size: 16px;
 line-height: 150%;
 text-align: center;
@@ -243,9 +273,9 @@ margin-top: 138px;
   li {
     width: 368px; 
     height: 216px; 
-        box-shadow: 0px 4px 8px rgba(11.48, 11.69, 12.75, 0.08); 
+    box-shadow: 0px 4px 8px rgba(11.48, 11.69, 12.75, 0.08); 
     border-radius: 10px; 
-    
+   
     overflow: hidden; 
     flex-direction: column; 
     align-items: center; 
@@ -260,6 +290,10 @@ display: flex;
     align-items: center;
     width: 100%;
     padding: 12px;
+    font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+color: #3d4d27;
     /* background: #F3DB7D;  */
   }
   .added-title img{
@@ -275,13 +309,18 @@ display: flex;
   }
   
   .added-description {
-    height: fit-content;
-    overflow: hidden;
+    width: 100%;
+    /* max-width: none;
+    margin: 0; */
+    overflow:hidden;
     padding: 12px;
+    line-height: 171%;
+    text-align: left;
   }
  
+ 
   .messages-box{
-    display: block;  /*менять на none*/
+    /* display: block;  менять на none */
   position: absolute; /* Размещаем кнопку поверх */
  bottom: 72px; /* Центрируем по вертикали */
   right: 64px ; /* Центрируем по горизонтали */
@@ -290,8 +329,9 @@ padding: 12px 24px;
 color: #fff;
 height: 48px;
 box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
-
-display: flex;
+font-weight: 500;
+line-height: 171%;
+display: none;
     align-items: center;
     justify-content: center;
     gap:10px;
