@@ -4,15 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet"> -->
   <link rel="stylesheet" href="./styles.css">
   <title>Notes</title>
 </head>
 
 <body>
+
+  <!-- Заголовок -->
+
   <header>
     <div class="logo">
       <img class="logo-notes" src="./assets/📝Notes.svg" alt="logo Notes">
@@ -22,61 +21,69 @@
       <span>Всего заметок: <span id="counter"></span></span>
     </div>
   </header>
+
   <section class="note-form">
+
+    <!-- Блок для входящих данных пользователя -->
+
     <div class="input-menu">
       <div class="title">
-      <label for="note-title">Название заметки</label>
-      <input type="text" id="note-title" placeholder="Напишите название новой заметки...">
-    </div>
-    <div class="description">
-      <div class="form-description">
-      <label for="note-description">Описание новой заметки</label>
-      <textarea id="note-description" placeholder="Напишите описание новой заметки..."></textarea>
-      <!-- Выбор цвета заметки -->
-    </div>
-    <div class="options">
-      <div class="color-picker">
-        <span>Выберите цвет заметки:</span>
-        <div class="colors">
-          <div class="border _yellow"><span class="color yellow"></span></div>
-          <div class="border _green"><span class="color green"></span></div>
-          <div class="border _blue"><span class="color blue"></span></div>
-          <div class="border _red"><span class="color red"></span></div>
-          <div class="border _purple"><span class="color purple"></span></div>
+        <label for="note-title">Название заметки</label>
+        <input type="text" id="note-title" placeholder="Напишите название новой заметки...">
+      </div>
+      <div class="description">
+        <div class="form-description">
+          <label for="note-description">Описание новой заметки</label>
+          <textarea id="note-description" placeholder="Напишите описание новой заметки..."></textarea>
+        </div>
+        <div class="options">
+          <div class="color-picker">
+            <span>Выберите цвет заметки:</span>
+            <div class="colors">
+              <div class="border _yellow"><span class="color yellow" role="checkbox" tabindex="0"></span></div>
+              <div class="border _green"><span class="color green" role="checkbox" tabindex="0"></span></div>
+              <div class="border _blue"><span class="color blue" role="checkbox" tabindex="0"></span></div>
+              <div class="border _red"><span class="color red" role="checkbox" tabindex="0"></span></div>
+              <div class="border _purple"><span class="color purple" role="checkbox" tabindex="0"></span></div>
+            </div>
+          </div>
+          <button class="add-note" type="button">
+            <img src="./assets/plus-svgrepo-com 1.png" class="add-note-img">Добавить заметку</button>
         </div>
       </div>
-      <button class="add-note" type="button"><img src="./assets/plus-svgrepo-com 1.png" class="add-note-img">Добавить
-        заметку</button>
-      </div>
-      
     </div>
 
-    </div>
+    <!-- Блок с фильтром избранных заметок - появляется, когда есть хотя бы одна заметка -->
 
-    <!-- Данный div должен удаляться при появлении заметок -->
-  
     <div class="filter-notes">
-      <img class = "checkbox-inactive" src="./assets/checkbox inactive.svg" alt="filter checkbox-inactive">
+      <img class="checkbox-inactive" src="./assets/checkbox inactive.svg" alt="filter checkbox-inactive">
       <span>Показать только избранные заметки</span>
     </div>
+
+      <!-- Блок с сообщением, которое скрывается при добавлении заметок -->
+
     <div class="main-content">
-      
       <p class="init-text">У вас нет еще ни одной заметки<br>
-       Заполните поля выше и создайте свою первую заметку!</p>
+        Заполните поля выше и создайте свою первую заметку!</p>
     </div>
+
     <ul class="notes-list">
       <!-- Сюда будут рендерится заметки из JavaScript -->
-       <!--  <li><div class="added-title yellow"><div>gaubvpn[</div><div class="img-menu"><img class="inactive "src="./assets/heart inactive.png" alt="heart inactive"><img src="./assets/trash.svg" alt="trash"></div></div><p class="added-description">Lorem ipsum dolor sit amet consecte Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus? tur adipisic commodi quaerat officia. Beatae, tempore?</p></li> -->
     </ul>
- 
-    <!-- <div class="messages-box">  -->
-      <button class="messages-box done" type="button"><img  src="./assets/Done.png" alt="img done">Заметка добавлена</button>
-        <button class="messages-box mistake length" type="button"><img  src="./assets/warning.png" alt="img done">Максимальная длина заголовка - 50 символов</button>
-        <button class="messages-box mistake empty" type="button"><img  src="./assets/warning.png" alt="img done">Заполните все поля</button>
-    <!-- </div>  -->
-  
-    </section> 
-    <script src="./main copy.js"></script>
+
+      <!-- Блок с сообщениями -->
+
+    <button class="messages-box done" type="button"><img src="./assets/Done.png" alt="img done">Заметка
+      добавлена</button>
+    <button class="messages-box mistake length" type="button"><img src="./assets/warning.png"
+        alt="img done">Максимальная длина заголовка - 50 символов</button>
+    <button class="messages-box mistake empty" type="button"><img src="./assets/warning.png" alt="img done">Заполните
+      все поля</button>
+
+  </section>
+    <!-- подключение JavaScript -->
+  <script src="./main.js"></script>
+
 </body>
 
 </html>
