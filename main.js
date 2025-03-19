@@ -191,9 +191,18 @@ const view = {
         const counter = document.getElementById('counter')
         // const list=document.querySelector('.notes-list')
         counter.textContent = document.querySelectorAll(".notes-list li").length
+    },
+    hideMessageAfterDelay(selector, delay = 3000) {
+        const messageBox = document.querySelector(selector);
+        if (messageBox) {
+            messageBox.style.display = "flex"; // Показываем сообщение
+            setTimeout(() => {
+                messageBox.style.display = "none"; // Скрываем через указанное время
+            }, delay);
+        }
     }
-
 }
+
 // обработка действий пользователя, обновление модели
 const controller = {
     addNote(title, description, color) {
@@ -201,40 +210,20 @@ const controller = {
         if ((title.trim() !== '') && (description.trim() !== '') && (title.length <= 50)) {
             model.addNote(title, description, color);
             // Показываем сообщение "Заметка добавлена"
-
-            const messageBox = document.querySelector('.messages-box.done');
-            messageBox.style.display = "flex"; // Делаем видимым
-
-            // Через 3 секунды скрываем
-            setTimeout(() => {
-                messageBox.style.display = "none";
-            }, 3000);
-            return true
+            view.hideMessageAfterDelay('.messages-box.done'); // Сообщение об успешном добавлении
+            return true;
         } else if (title.length > 50) {
-            const messageBox = document.querySelector('.messages-box.mistake.length');
-            messageBox.style.display = "flex"; // Делаем видимым
-
-            // Через 3 секунды скрываем
-            setTimeout(() => {
-                messageBox.style.display = "none";
-            }, 3000);
+            view.hideMessageAfterDelay('.messages-box.mistake.length'); // Ошибка длины заголовка
         } else {
-            const messageBox = document.querySelector('.messages-box.mistake.empty');
-            messageBox.style.display = "flex"; // Делаем видимым
-
-            // Через 3 секунды скрываем
-            setTimeout(() => {
-                messageBox.style.display = "none";
-            }, 3000);
-
-            return false
+            view.hideMessageAfterDelay('.messages-box.mistake.empty'); // Ошибка пустых полей
         }
+        return false;
     },
+    
     deleteNote(noteId) {
         model.deleteNote(noteId)
     },
 }
-
 
 function init() {
     view.init()
