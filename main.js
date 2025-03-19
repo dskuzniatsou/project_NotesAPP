@@ -1,5 +1,28 @@
+const MOKK_NOTES =[
+    {
+        id: 1,
+        title: "Купить продукты",
+        description: "Купить хлеб, молоко, яйца и овощи",
+        color: "yellow",
+        isFavorite: false
+    },
+    {
+        id: 2,
+        title: "Позвонить врачу",
+        description: "Записаться на приём в 15:00",
+        color: "green",
+        isFavorite: true
+    },
+    {
+        id: 3,
+        title: "Учить JavaScript",
+        description: "Разобрать темы: замыкания, промисы, async/await",
+        color: "blue",
+        isFavorite: false
+    }
+]
 const model = {
-    notes: [],
+    notes: MOKK_NOTES,
     isShowOnlyFavorite: false, // Флаг для фильтрации
 
     addNote(title, description, color = 'yellow') {
